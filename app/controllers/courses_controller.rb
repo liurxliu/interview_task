@@ -24,8 +24,7 @@ class CoursesController < AdminController
   # POST /courses
   # POST /courses.json
   def create
-
-    @course = Course.new(course_params)
+    @course = current_user.courses.new(course_params)
 
     respond_to do |format|
       if @course.save
@@ -42,7 +41,6 @@ class CoursesController < AdminController
   # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
-
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
@@ -71,6 +69,6 @@ class CoursesController < AdminController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:theme, :price, :currency, :course_type, :available, :url, :description, :end_at)
+      params.require(:course).permit(:theme, :price, :currency, :course_type, :available, :url, :description, :start_at, :expire_days)
     end
 end

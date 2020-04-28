@@ -17,7 +17,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { available: @course.available, currency: @course.currency, description: @course.description, end_at: @course.end_at, price: @course.price, theme: @course.theme, type: @course.type, url: @course.url } }
+      post courses_url, params: { course: { available: @course.available, course_type: @course.course_type, currency: @course.currency, description: @course.description, expire_days: @course.expire_days, price: @course.price, start_at: @course.start_at, theme: @course.theme, url: @course.url, user_id: @course.user_id } }
     end
 
     assert_redirected_to course_url(Course.last)
@@ -34,7 +34,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update course" do
-    patch course_url(@course), params: { course: { available: @course.available, currency: @course.currency, description: @course.description, end_at: @course.end_at, price: @course.price, theme: @course.theme, type: @course.type, url: @course.url } }
+    patch course_url(@course), params: { course: { available: @course.available, course_type: @course.course_type, currency: @course.currency, description: @course.description, expire_days: @course.expire_days, price: @course.price, start_at: @course.start_at, theme: @course.theme, url: @course.url, user_id: @course.user_id } }
     assert_redirected_to course_url(@course)
   end
 

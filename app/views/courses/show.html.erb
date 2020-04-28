@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>User ID:</strong>
+  <%= @course.user_id %>
+</p>
+
+<p>
   <strong>Theme:</strong>
   <%= @course.theme %>
 </p>
@@ -16,7 +21,7 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong>Course type:</strong>
   <%= @course.course_type %>
 </p>
 
@@ -36,8 +41,13 @@
 </p>
 
 <p>
-  <strong>End at:</strong>
-  <%= @course.end_at %>
+  <strong>Start at:</strong>
+  <%= @course.start_at %>
+</p>
+
+<p>
+  <strong>Expire days:</strong>
+  <%= @course.expire_days %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

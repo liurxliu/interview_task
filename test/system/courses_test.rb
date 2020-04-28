@@ -15,13 +15,15 @@ class CoursesTest < ApplicationSystemTestCase
     click_on "New Course"
 
     check "Available" if @course.available
+    fill_in "Course type", with: @course.course_type
     fill_in "Currency", with: @course.currency
     fill_in "Description", with: @course.description
-    fill_in "End at", with: @course.end_at
+    fill_in "Expire days", with: @course.expire_days
     fill_in "Price", with: @course.price
+    fill_in "Start at", with: @course.start_at
     fill_in "Theme", with: @course.theme
-    fill_in "Type", with: @course.type
     fill_in "Url", with: @course.url
+    fill_in "User", with: @course.user_id
     click_on "Create Course"
 
     assert_text "Course was successfully created"
@@ -33,13 +35,15 @@ class CoursesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     check "Available" if @course.available
+    fill_in "Course type", with: @course.course_type
     fill_in "Currency", with: @course.currency
     fill_in "Description", with: @course.description
-    fill_in "End at", with: @course.end_at
+    fill_in "Expire days", with: @course.expire_days
     fill_in "Price", with: @course.price
+    fill_in "Start at", with: @course.start_at
     fill_in "Theme", with: @course.theme
-    fill_in "Type", with: @course.type
     fill_in "Url", with: @course.url
+    fill_in "User", with: @course.user_id
     click_on "Update Course"
 
     assert_text "Course was successfully updated"

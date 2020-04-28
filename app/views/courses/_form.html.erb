@@ -47,8 +47,13 @@
   </div>
 
   <div class="field">
-    <%= form.label 'End at (in 1-30 days)' %>
-    <%= form.datetime_select :end_at %>
+    <%= form.label :start_at %>
+    <%= form.datetime_select :start_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Expire days(1-30)' %>
+    <%= form.number_field :expire_days %>
   </div>
 
   <div class="actions">
