@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_102625) do
+ActiveRecord::Schema.define(version: 2020_04_28_111826) do
 
   create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "user_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2020_04_28_102625) do
     t.text "description"
     t.datetime "start_at"
     t.integer "expire_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchase_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "course_id"
+    t.string "payment_method", default: "credit_card"
+    t.decimal "amount", precision: 10
+    t.boolean "paid", default: false
+    t.string "currency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
