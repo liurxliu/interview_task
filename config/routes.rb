@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses, path: 'admin/courses'
   root 'home#index'
 
   resources :users, only: [:create, :show]

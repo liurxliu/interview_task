@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_052827) do
+ActiveRecord::Schema.define(version: 2020_04_28_080042) do
+
+  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "theme"
+    t.decimal "price", precision: 10
+    t.string "currency"
+    t.string "course_type"
+    t.boolean "available"
+    t.text "url"
+    t.text "description"
+    t.datetime "end_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
