@@ -11,6 +11,7 @@ module Services
         prepare_query
         filter_by_course_type
         filter_by_available
+        prepare_purchase_records
 
         render_and_format_response
       end
@@ -18,12 +19,10 @@ module Services
       private
 
       attr_accessor :user, :course_type, :available
-      attr_accessor :query
+      attr_accessor :query, :purchase_records
 
       def prepare_query
-        purchase_record_ids = user.purchase_records.select(:id).map(&:id)
-        @query = PurchaseRecord.joins(:course)
-                               .where(id: purchase_record_ids)
+        @query = user.purchase_records.joins(:course)
       end
 
       def filter_by_course_type
@@ -42,8 +41,13 @@ module Services
         end
       end
 
+      def prepare_purchase_records
+        purchase_record_ids = @query.select(:id).map(&:id)
+        @purchase_records = ::PurchaseRecord.includes(:course).where(id: purchase_record_ids)
+      end
+
       def render_and_format_response
-        @query.map do |record|
+        @purchase_records.map do |record|
           course = record.course
           {
             course: course,
