@@ -23,10 +23,8 @@ module Services
 
       def check_user_can_buy_course
         user_has_record = user.purchase_records.where(course_id: course.id).exists?
-        if user_has_record
-          raise 'Course is not expired' if !course.expired?
-          raise 'Already has this course'
-        end
+
+        raise 'Already has this course' if user_has_record && !course.expired?
       end
 
       def store_purchase_record
