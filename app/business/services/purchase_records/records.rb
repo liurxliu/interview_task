@@ -50,8 +50,8 @@ module Services
         @purchase_records.map do |record|
           course = record.course
           {
-            course: course,
-            record: record
+            course: V1::Entities::Course.represent(course),
+            record: V1::Entities::PurchaseRecord.represent(record)
           }
         end
       end
